@@ -1,18 +1,18 @@
 [
     {
-        "city_id": 2643743,
-        "city_name": "London",
+        "cityId": 2643743,
+        "cityName": "London",
         "frequency": 20,
         "threshold":10
     },
     {
-        "city_id": 293397,
-        "city_name": "Tel Aviv",
+        "cityId": 293397,
+        "cityName": "Tel Aviv",
         "frequency": 60,
         "threshold":2
     },
     {
-        "city_name": "Barcelona ",
+        "cityName": "Barcelona ",
         "frequency": 40,
         "threshold":6
     }

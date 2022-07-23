@@ -1,41 +1,37 @@
 package com.example.weatherapp;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
+
 import java.io.IOException;
-import java.nio.file.Files;
+import java.io.InputStream;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.example.weatherapp.entity.Inputdata;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @SpringBootApplication
 public class WeatherAppApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		SpringApplication.run(WeatherAppApplication.class, args);
 		
-		File file = null;
-		try {
-			file = ResourceUtils.getFile("classpath:citys.json");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//Read File Content
-		String content = null;
-		try {
-			content = new String(Files.readAllBytes(file.toPath()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(content);
+		final String JSON_DATA = "/citys.json";
+		
+		TypeReference<List<Inputdata>> typeReference = new TypeReference<List<Inputdata>>() {
+		};
+		
+		InputStream inputStream = TypeReference.class.getResourceAsStream(JSON_DATA);
+		List <Inputdata> data = new ObjectMapper().readValue(inputStream, typeReference);
+		System.out.println(data);
+		
+		
 	}
 	
 	
