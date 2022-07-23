@@ -12,10 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Utils {
 	
-	public static void name() {
-		System.out.println("hello");
-	}
-	
 	public static List<Inputdata> getDataFromJsonFile() {
 		
 		final String JSON_DATA = "/citys.json";
@@ -37,7 +33,7 @@ public class Utils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(data);
+		//System.out.println(data);
 		return data;
 		
 	}
